@@ -1,0 +1,3 @@
+traznje postova
+javi kad je postavljen post
+prebaci na post automatski

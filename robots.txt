@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: /images/
+Disallow: /css/
+Disallow: /include
+Disallow: /classes
+Disallow: /admin.php
+Disallow: /moderator.php
+Disallow: /verifyMail.php
+Disallow: /db_config.php
+Disallow: /login.php
+Disallow: /report.php
+Disallow: /signup.php

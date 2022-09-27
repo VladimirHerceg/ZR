@@ -1,0 +1,30 @@
+.AniForum
+{
+   /* position: relative;
+    display: table-cell;
+    vertical-align: center;
+*/    padding-top: 10px;
+      font-size: 25px;
+}
+.cnt
+{
+      padding-top: 100px;
+}
+.ponuda
+{
+      color: #fff;
+      font-size: 25px;
+}
+footer {
+      margin-top: 20px;
+}
+.error {
+      color: #E75E80 ;
+  }
+body {
+      min-height: 100vh;
+    }
+
+.flex-grow {
+      flex: 1;
+    }
