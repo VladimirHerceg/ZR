@@ -50,7 +50,7 @@ define("SALT2", "r2g3h5l6r7t8s6d7u35g24y4123432dkow62ig236622ute2ywoihutyp");
 
                             $header = "From:<hercegznadlanu@gmail.com>\n";
                             $header .= "X-Mailer: PHP\n";
-                            $header .= "Return-Path: <hercegznadlanu@gmail>\n";
+                            $header .= "Return-Path: <hercegznadlanu@gmail.com>\n";
                             $header .= "Content-Type: text/html; charset=UTF-8\n";
                             $to = "$Email";
                             $subject = "Web=shop verification mail";
