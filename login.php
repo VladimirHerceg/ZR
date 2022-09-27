@@ -45,13 +45,13 @@ define("SALT2", "r2g3h5l6r7t8s6d7u35g24y4123432dkow62ig236622ute2ywoihutyp");
                     elseif ($row['EmailConfirm'] == '0') {
             
                     
-                        $header = "From:<theinsectcollector1@gmail.com>\n";
+                        $header = "From:<hercegznadlanu@gmail.com>\n";
                         $header .= "X-Mailer: PHP\n";
-                        $header .= "Return-Path: <theinsectcollector1@gmail.com>\n";
+                        $header .= "Return-Path: <hercegznadlanu@gmail.com>\n";
                         $header .= "Content-Type: text/html; charset=UTF-8\n";
                         $to = $row['Email']; 
                         $subject = "Web=shop verification mail";
-                        $message = "<a href='verifyMail.php?token=".$row['Token']."'>Click this to verify E-Mail</a>";
+                        $message = "<a href='https://zavrsniradvladimir.000webhostapp.com/verifyMail.php?token=".$row['Token']."'>Click this to verify E-Mail</a>";
     
                         if (mail($to, $subject, $message, $header))
                             header("Location:login1.php?r=1");
