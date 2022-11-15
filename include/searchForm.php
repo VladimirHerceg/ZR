@@ -1,12 +1,12 @@
 <?php
-function form ($url) {
+function form ($url,$search) {
    
     echo '
     <form action="'.$url.'" method="post" >
         <div class="container-fluid text-center text-md-left">
             <div class="row justify-content-center mx-0 px-0" style="margin-top: 35px">
             <div class="col-8 col-sm-4 offset-sm-1 col-md-2 offset-md-1">
-                    <input type="text" name="name" class="form-control text-center" placeholder="Ime proizvoda" aria-label="name" aria-describedby="basic-addon1">
+                    <input type="text" name="name" class="form-control text-center" placeholder="'.$search.'" aria-label="name" aria-describedby="basic-addon1">
                 </div>
             <div class="rcena custom-control custom-radio text-center col-6 offset-3 col-md-2 offset-md-1" >
                     <input type="radio" class="form-input" id="rise" name="sort" value="rise">

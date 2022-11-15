@@ -5,8 +5,9 @@ if(isset($_SESSION['u_id'])) {
 
   
   $url ="favorite.php?action=post";
+  $search = "Titl";
   echo '<body class="d-flex flex-column min-vh-100">';
-  form($url);
+  form($url,$search);
       
 
             echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";

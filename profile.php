@@ -110,7 +110,8 @@ echo '<body class="d-flex flex-column min-vh-100">';
   echo'</div>
   <div>'.$user.'</div></div>';
 $url = "profile.php?action=".$action."";
-form($url);
+$search = "Titl";
+form($url,$search);
 
 
 
@@ -173,7 +174,8 @@ echo'</div>
 
 
   $url = "profile.php?action=".$action."";
-  form($url);    
+  $search = "Titl";
+  form($url,$search);    
     echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";
     $sql="SELECT posts.Id as Id, posts.Title as title FROM posts WHERE posts.MemberId = $action";
     
@@ -213,7 +215,8 @@ else {
     echo'</div>
     <div>'.$user.'</div></div>';
         $url = "profile.php?action=".$action."";
-    form($url);    
+        $search = "Titl";
+    form($url,$search);    
       
     echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";
     $sql="SELECT posts.Id as Id, posts.Title as title FROM posts WHERE posts.MemberId = $action";

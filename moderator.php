@@ -22,7 +22,8 @@ if(isset($_GET["id"]))
 switch ($action){
     case "post":
         $url ="moderator.php?action=post";
-        form($url);
+        $search = "Titl";
+        form($url,$search);
 
             echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";
             $sql="SELECT posts.Id as Id, posts.Title as title FROM posts ";
@@ -78,7 +79,8 @@ if(!empty($_POST["name"])){
 
     case "user":
         $url ="moderator.php?action=user";
-        form($url);
+        $search = "Username";
+        form($url,$search);
             echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";
             $sql="SELECT * FROM members WHERE Moderator !=1 AND Banned !=1";
             
@@ -189,7 +191,8 @@ if(!empty($_POST["name"])){
         case "ban":
 
             $url ="moderator.php?action=ban";
-            form($url);
+            $search = "Username";
+            form($url,$search);
 
     
                 echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";
