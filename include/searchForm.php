@@ -18,8 +18,8 @@ function form ($url,$search) {
                 </div>
             </div>
             <div class="row">
-            <input type="submit" name="sub" class="trazib btn btn-primary col-4 offset-4 col-md-2 offset-md-3" value="Trazi">
-                <input type="submit" name="drop" class="ponistib btn btn-primary col-4 offset-4 col-md-2 offset-md-2" value="Ponisti">
+            <input type="submit" name="sub" class="trazib btn btn-primary col-4 offset-4 col-md-2 offset-md-3" value="Traži">
+                <input type="submit" name="drop" class="ponistib btn btn-primary col-4 offset-4 col-md-2 offset-md-2" value="Poništi">
             </div> 
         </div> 
     </form>

@@ -22,7 +22,7 @@ switch ($action){
     case "user":
 
         $url ="admin.php?action=user";
-        $search = "Username";
+        $search = "Korisničko ime";
         form($url,$search);
 
             echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";
@@ -74,7 +74,7 @@ switch ($action){
 
 
         $url ="admin.php?action=mod";
-        $search = "Username";
+        $search = "Korisničko ime";
         form($url,$search);
                     echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";
             $sql="SELECT * FROM members WHERE Moderator =1 AND Admin !=1";
@@ -125,7 +125,7 @@ switch ($action){
     default:
 
     $url ="admin.php?action=user";
-    $search = "Username";
+    $search = "Korisničko ime";
     form($url,$search);
 
         echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";

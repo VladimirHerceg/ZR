@@ -51,13 +51,13 @@ session_start();
                 if($_SESSION['u_moderator']==1){
                     echo '<li class="nav-item dropdown ">
                 <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Moderator
+                    Moderacija
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="moderator.php?action=post">Posts</a>
-                    <a class="dropdown-item" href="moderator.php?action=user">Users</a> 
-                    <a class="dropdown-item" href="moderator.php?action=report">Reports</a> 
-                    <a class="dropdown-item" href="moderator.php?action=ban">Banned users</a> 
+                    <a class="dropdown-item" href="moderator.php?action=post">Postovi</a>
+                    <a class="dropdown-item" href="moderator.php?action=user">Korisnici</a> 
+                    <a class="dropdown-item" href="moderator.php?action=report">Reportovi</a> 
+                    <a class="dropdown-item" href="moderator.php?action=ban">Banovani korisnici</a> 
                 </div>
             </li>';}
             }
@@ -68,11 +68,11 @@ session_start();
                 if($_SESSION['u_admin']==1){
                     echo '<li class="nav-item dropdown ">
                 <a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Admin
+                    Administracija
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="admin.php?action=user">Users</a>            
-                <a class="dropdown-item" href="admin.php?action=mod">Moderators</a>            
+                <a class="dropdown-item" href="admin.php?action=user">Korisnici</a>            
+                <a class="dropdown-item" href="admin.php?action=mod">Moderatori</a>            
                 </div>
             </li>';}
             }
@@ -85,7 +85,7 @@ session_start();
                 echo '
                   <p style="color:black; font-size: 20px " class="pt-2"><a style="color:black; text-decoration:none;"href="profile.php?action='.$_SESSION['u_id'].'">'.$_SESSION['u_username'].'</a> </p> &nbsp&nbsp
                   <form action="include/logout.php"  method="post">
-                    <button type="submit" class="btn btn-sm btn-info" style="margin-top: 7px" name="logout">Logout</button>
+                    <button type="submit" class="btn btn-sm btn-info" style="margin-top: 7px" name="logout">Izloguj se</button>
                   </form>';
             }else{
                 echo '

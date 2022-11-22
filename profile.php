@@ -31,14 +31,14 @@ switch ($stats) {
 
     echo '<body class="d-flex flex-column min-vh-100">';
     echo '<div class="row col-1">
-    <a class="nav-link col-12 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
+    <a class="nav-link col-12 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opcije</a>
     <div class="dropdown-menu col-1" aria-labelledby="navbarDropdown">
-  <a class="dropdown-item" href="profile.php?action='.$action.'">Posts</a>
-  <a class="dropdown-item" href="profile.php?action='.$action.'&stats=stats">Stats</a>';
+  <a class="dropdown-item" href="profile.php?action='.$action.'">Postovi</a>
+  <a class="dropdown-item" href="profile.php?action='.$action.'&stats=stats">Statistika</a>';
   if($id == $action)
-  echo '<a class="dropdown-item" href="include/update.php?action=deleteMe&id='.$action.'">Delete profile</a>';
+  echo '<a class="dropdown-item" href="include/update.php?action=deleteMe&id='.$action.'">Obriši profil</a>';
   else if($moderator == 1 && $id != $action)
-  echo '<a class="dropdown-item" href="include/update.php?action=banUser&id='.$action.'">Ban user</a>';
+  echo '<a class="dropdown-item" href="include/update.php?action=banUser&id='.$action.'">Ban</a>';
   echo'</div>
   <div>'.$user.'</div></div>';
     $sql="SELECT PTotal,PCurrent,PDeleted,Reports from members where id=$action";
@@ -48,19 +48,19 @@ switch ($stats) {
       while ($record= mysqli_fetch_array($result)){
           echo "
           <div class='row align-self-center bg-dark border'>
-          <div class='col-3 align-self-center bg-dark '>Total posts</div>
+          <div class='col-3 align-self-center bg-dark '>Totalani broj postova</div>
           <div class='col-3 offset-4 align-self-center bg-dark' >".$record["PTotal"]."</div>
           </div>
           <div class='row align-self-center bg-dark border'>
-          <div class='col-3 align-self-center bg-dark '>Current posts</div>
+          <div class='col-3 align-self-center bg-dark '>Trenutani broj postova</div>
           <div class='col-3 offset-4 align-self-center bg-dark' >".$record["PCurrent"]."</div>
           </div>
           <div class='row align-self-center bg-dark border'>
-          <div class='col-3 align-self-center bg-dark '>Deleted posts</div>
+          <div class='col-3 align-self-center bg-dark '>Broj obrisanih postova</div>
           <div class='col-3 offset-4 align-self-center bg-dark' >".$record["PDeleted"]."</div>
           </div>
           <div class='row align-self-center bg-dark border'>
-          <div class='col-3 align-self-center bg-dark '>Reports</div>
+          <div class='col-3 align-self-center bg-dark '>Reportovi</div>
           <div class='col-3 offset-4 align-self-center bg-dark' >".$record["Reports"]."</div>
           </div>
           </div>";
@@ -102,11 +102,11 @@ mysqli_free_result($result);
 
 echo '<body class="d-flex flex-column min-vh-100">';
   echo '<div class="row col-1">
-    <a class="nav-link dropdown-toggle col-12" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
+    <a class="nav-link dropdown-toggle col-12" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opcije</a>
     <div class="dropdown-menu col-1" aria-labelledby="navbarDropdown">
-  <a class="dropdown-item" href="profile.php?action='.$action.'">Posts</a>
-  <a class="dropdown-item" href="profile.php?action='.$action.'&stats=stats">Stats</a>
-  <a class="dropdown-item" href="include/update.php?action=deleteMe&id='.$action.'">Delete profile</a>';
+  <a class="dropdown-item" href="profile.php?action='.$action.'">Postovi</a>
+  <a class="dropdown-item" href="profile.php?action='.$action.'&stats=stats">Statistika</a>
+  <a class="dropdown-item" href="include/update.php?action=deleteMe&id='.$action.'">Obriši profil</a>';
   echo'</div>
   <div>'.$user.'</div></div>';
 $url = "profile.php?action=".$action."";
@@ -164,11 +164,11 @@ echo "</div>";
 elseif ($moderator == 1 && $id != $action) {
   echo '<body class="d-flex flex-column min-vh-100">';
 echo '<div class="row col-1">
-<a class="nav-link dropdown-toggle col-12" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
+<a class="nav-link dropdown-toggle col-12" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opcije</a>
 <div class="dropdown-menu col-1" aria-labelledby="navbarDropdown">
-<a class="dropdown-item" href="profile.php?action='.$action.'">Posts</a>
-<a class="dropdown-item" href="profile.php?action='.$action.'&stats=stats">Stats</a>
-<a class="dropdown-item" href="include/update.php?action=banUser&id='.$action.'">Ban user</a>';
+<a class="dropdown-item" href="profile.php?action='.$action.'">Postovi</a>
+<a class="dropdown-item" href="profile.php?action='.$action.'&stats=stats">Statistika</a>
+<a class="dropdown-item" href="include/update.php?action=banUser&id='.$action.'">Ban</a>';
 echo'</div>
 <div>'.$user.'</div></div>';
 
@@ -208,10 +208,10 @@ else {
     echo '<body class="d-flex flex-column min-vh-100">';
     echo '<body class="d-flex flex-column min-vh-100">';
     echo '<div class="row col-1">
-    <a class="nav-link dropdown-toggle col-12" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
+    <a class="nav-link dropdown-toggle col-12" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opcije</a>
     <div class="dropdown-menu col-1" aria-labelledby="navbarDropdown">
-    <a class="dropdown-item" href="profile.php?action='.$action.'">Posts</a>
-    <a class="dropdown-item" href="profile.php?action='.$action.'&stats=stats">Stats</a>';
+    <a class="dropdown-item" href="profile.php?action='.$action.'">Postovi</a>
+    <a class="dropdown-item" href="profile.php?action='.$action.'&stats=stats">Statistika</a>';
     echo'</div>
     <div>'.$user.'</div></div>';
         $url = "profile.php?action=".$action."";

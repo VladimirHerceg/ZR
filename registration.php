@@ -27,8 +27,8 @@ require "include/header.php";
                         <span id="phone_error" class="error"></span><br>
                     </div>
                     <span id="all_error" class="error" style="margin-bottom: 10px; margin-top:30px"></span>
-                    <input type="submit" class="btn btn-primary btn-lg" name="register" value="Register" style="margin-bottom: 10px">
-                <input type="reset" class="btn btn-primary btn-lg" name="reset" value="Reset" style="margin-bottom: 20px;">
+                    <input type="submit" class="btn btn-primary btn-lg" name="register" value="Registruj" style="margin-bottom: 10px">
+                <input type="reset" class="btn btn-primary btn-lg" name="reset" value="Resetuj" style="margin-bottom: 20px;">
                 </div> 
             </form>
 <div class='flex-grow'></div>

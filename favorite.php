@@ -46,7 +46,7 @@ if(isset($_SESSION['u_id'])) {
                 echo "
                 <div class='row col-12 align-self-center bg-dark border'>
                   <div class='col-9 align-self-center'><a style='color: whitesmoke; text-decoration: none;' href='openPost.php?action=".$record["Id"]."'>".$record["title"]."</a></div>
-                  <button class=\"btn btn-info col-3 align-self-center mx-0 px-0 border\" onclick=\"window.location.href='include/update.php?action=unFavorite&id=".$record["Id"]."'\">Obrisi</button>
+                  <button class=\"btn btn-info col-3 align-self-center mx-0 px-0 border\" onclick=\"window.location.href='include/update.php?action=unFavorite&id=".$record["Id"]."'\">Izbaci iz omiljenog</button>
                   </div>";
                   
                     }

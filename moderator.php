@@ -79,7 +79,7 @@ if(!empty($_POST["name"])){
 
     case "user":
         $url ="moderator.php?action=user";
-        $search = "Username";
+        $search = "Korisničko ime";
         form($url,$search);
             echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";
             $sql="SELECT * FROM members WHERE Moderator !=1 AND Banned !=1";
@@ -167,7 +167,7 @@ if(!empty($_POST["name"])){
                 echo "
                 <div class='col-4 align-self-top bg-dark border-bottom' style='color: whitesmoke;'>Post Id</div><br>
                 <div class='col-4 align-self-top bg-dark border-bottom' style='color: whitesmoke;'>Razlog</div><br>
-                <div class='col-4 align-self-top bg-dark border-bottom' style='color: whitesmoke;'>Delete</div><br></div>";
+                <div class='col-4 align-self-top bg-dark border-bottom' style='color: whitesmoke;'>Obriši</div><br></div>";
             
             $result=mysqli_query($connection,$sql);
             if(mysqli_num_rows($result)>0){
@@ -191,7 +191,7 @@ if(!empty($_POST["name"])){
         case "ban":
 
             $url ="moderator.php?action=ban";
-            $search = "Username";
+            $search = "Korisničko ime";
             form($url,$search);
 
     
@@ -235,7 +235,7 @@ if(!empty($_POST["name"])){
                     <div class='col-12' style='height:2vh'></div>
                     <button class=\"btn btn-info col-12 align-self-center mx-0 px-0 border\" onclick=\"window.location.href='include/update.php?action=unbanUser&id=".$record["Id"]."'\">Unban</button>
                     <div class='col-12' style='height:1vh'></div>
-                    <button class=\"btn btn-info col-12 align-self-center mx-0 px-0 border\" onclick=\"window.location.href='include/update.php?action=deleteUser&id=".$record["Id"]."'\">Delete</button>
+                    <button class=\"btn btn-info col-12 align-self-center mx-0 px-0 border\" onclick=\"window.location.href='include/update.php?action=deleteUser&id=".$record["Id"]."'\">Obriši</button>
                     <div class='col-12' style='height:2vh'></div>
                     </div></div>";    
                 }

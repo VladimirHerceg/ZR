@@ -7,15 +7,14 @@ require "include/header.php";
         <meta property="og:title" content="Ani Forum"/>
         <meta property="og:type" content="Forum" />
         <meta property="og:url" content="index.php"/>
-        <meta property="og:image" content="images/other/boxes-near-display-counter-2564460.jpg"/>
         <meta property="og:site_name" content="Forum"/>
         <meta property="og:description" content="On our Forum you can discuss animals"/>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="This is a College project for Subotica Tech">
         <meta name="robots" content="index, follow">
-        <meta name="author" content="Stefan&Vladimir">
-        <meta name="keywords" content="Ani Forum,Forum,Animal Forum,Animals">
+        <meta name="author" content="Vladimir">
+        <meta name="keywords" content="Ani Forum,Forum,Animal Forum,Animals,Životinje,Forum za Životinjama">
         <meta http-equiv="content-type" content="text/image/html">
         <meta http-equiv="content-language" content="rs">
 <body class="d-flex flex-column">

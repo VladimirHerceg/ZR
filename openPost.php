@@ -44,17 +44,17 @@ if(mysqli_num_rows($postResult)>0){
     <div class='dropdown-menu' aria-labelledby='navbarDropdown'>";
 
     if(isset($_SESSION['u_id'])){
-        echo "<a class='dropdown-item' href='report.php?id=".$sessId."&action=".$post["postId"]."'>Report</a>";
+        echo "<a class='dropdown-item' href='report.php?id=".$sessId."&action=".$post["postId"]."'>Reportaža</a>";
         $fpid = $post["postId"];
         $fmid = $post["MemberId"];
         $favSql = "SELECT * FROM favorite WHERE MemberId = $sessId AND PostId = $fpid;";  
         $favres=mysqli_query($connection,$favSql);
         if(mysqli_num_rows($favres) == 0){
-            echo "<a class='dropdown-item' href='include/update.php?action=favorite&id=".$post["postId"]."'>Favorite</a>";
+            echo "<a class='dropdown-item' href='include/update.php?action=favorite&id=".$post["postId"]."'>Omiljeno</a>";
         }
 }
 if($sessId == $post["MemberId"] or $moderator == 1){
-    echo "<a class='dropdown-item' href='include/update.php?action=deleteMyPost&id=".$post["postId"]."'>Delete</a>";
+    echo "<a class='dropdown-item' href='include/update.php?action=deleteMyPost&id=".$post["postId"]."'>Obriši</a>";
 }
 
     echo "</div>
