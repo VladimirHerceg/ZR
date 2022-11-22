@@ -80,7 +80,9 @@ if(empty($_FILES["file"]["tmp_name"]))
                     exit();
 
                 } else
-                    echo "<p><b>Error!</b></p>";
+                    echo "Ne postoji folder";
+                    echo "<p><b>$upload</b></p>";
+                    echo "<p><b>$directory</b></p>";
             } else
                 echo "<p><b>File with this name already exists!</b></p>";
         }

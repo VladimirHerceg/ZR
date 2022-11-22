@@ -52,7 +52,7 @@ function myCaseFunction() {
     var n = link.substr(link.length - 4);
     switch(n) {
         case "?i=0":
-            $('all_error').innerHTML = 'Uspesno postavljeno';
+            $('all_error').innerHTML = 'Uspšsno postavljeno';
             break;
         case "?l=0":
             $('all_error').innerHTML = 'Nema direktne linije';
@@ -61,7 +61,7 @@ function myCaseFunction() {
             $('id_error').innerHTML = 'Korisničko ime je zauzeto!';
             break;
         case "?l=2":
-            $('email_error').innerHTML = 'E-mail vec postoji!';
+            $('email_error').innerHTML = 'E-mail već postoji!';
             break;
         case "?r=0":
             $('all_error').innerHTML = 'Nema direktne linije';
@@ -85,7 +85,7 @@ function myCaseFunction() {
             alert("Verifikacioni email je poslat")
             break;
             case "?r=7":
-            $('all_error').innerHTML = 'Ovaj profil je banovan, ako zelite da znate zasto ili da se zalite na ovu odluku molimo vam da name se javite preko email-a sa korisnickim imeno';
+            $('all_error').innerHTML = 'Ovaj profil je banovan, ako želite da znate zašto ili da se žalite na ovu odluku molimo vam da se javite preko email-a sa korisničkim imenom';
             break;
             
     }
