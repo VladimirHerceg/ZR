@@ -2,6 +2,18 @@
 include "db_config.php";
 include "searchForm.php";
 session_start();
+
+if(!isset($_SESSION['lang']))
+{
+  $_SESSION['lang'] = 'eng';
+}
+else {
+    if(isset($_POST['eng'])) {
+        $_SESSION['lang'] = 'eng'; }
+    if(isset($_POST['srb'])) {
+        $_SESSION['lang'] = 'srb'; }
+}
+$language = $_SESSION['lang'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,32 +32,76 @@ session_start();
     
 ?>
 <nav class="navbar container-fluid navbar-expand-lg navbar-light bg-light text-center">
+<form method="post">
+     <a  href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+     <input type="image" src="images/other/kindpng_6086914.png" style="height: 45px; width: 55px" alt="Language">
+
+                </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <input class="dropdown-item" type="submit" name="eng" value="eng"/>
+            <input class="dropdown-item" type="submit" name="srb" value="srb"/>
+        </div>
+        </form>
     <div class="AniForum" style="color: #000;"><p>Ani Forum</p></div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+            <?php 
+             switch ($language){
+            
+                case "eng":
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                   echo '<div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ">
+            <li class="nav-item">
+                <a class="nav-link" href="index.php">Homepage </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="posts.php">Posts </a>
+            </li>';
+
+            
+            if (isset($_SESSION['u_id'])) {
+                echo '<li class="nav-item">
+                    <a class="nav-link" href="newPost.php">New</a>
+                 </li>';}
+            
+            
+            if (isset($_SESSION['u_id'])) {
+                echo '<li class="nav-item">
+                    <a class="nav-link" href="favorite.php?action=see">Favorite </a>
+                 </li>';}
+            
+         
+                break;
+
+                case "srb":
+
+                  echo '<div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ">
             <li class="nav-item">
                 <a class="nav-link" href="index.php">Početna </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="posts.php">Postovi </a>
-            </li>
-
-            <?php
+            </li>';
+            
+            
             if (isset($_SESSION['u_id'])) {
                 echo '<li class="nav-item">
                     <a class="nav-link" href="newPost.php">Novo</a>
                  </li>';}
-            ?>
-            <?php
+            
             if (isset($_SESSION['u_id'])) {
                 echo '<li class="nav-item">
                     <a class="nav-link" href="favorite.php?action=see">Omiljeno </a>
                  </li>';}
-            ?>
+
+           
+                
+                break;
+            }
+            ?>    
             <?php
             if (isset($_SESSION['u_moderator'])) {
                 if($_SESSION['u_moderator']==1){

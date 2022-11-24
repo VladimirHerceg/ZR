@@ -22,7 +22,31 @@
                 </ul>
             </div>
             <div class="col-md-4 mb-md-0 mb-3">
-                <h5 class="text-uppercase">KORISNI LINKOVI</h5>
+
+
+
+            <?php 
+
+
+            switch ($language){
+            
+                case "eng":
+            
+            echo ' <h5 class="text-uppercase">USEFUL LINKS</h5>
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="index.php " style="color: #000; text-decoration: none">Homepage</a>
+                    </li>
+                    <li>
+                        <a href="posts.php" style="color: #000; text-decoration: none">Posts</a>
+                    </li>
+                </ul>';
+                 
+                break;
+
+                case "srb":
+
+            echo '<h5 class="text-uppercase">KORISNI LINKOVI</h5>
                 <ul class="list-unstyled">
                     <li>
                         <a href="index.php " style="color: #000; text-decoration: none">Početna</a>
@@ -30,7 +54,11 @@
                     <li>
                         <a href="posts.php" style="color: #000; text-decoration: none">Postovi</a>
                     </li>
-                </ul>
+                </ul>';
+
+                break;
+            }
+            ?>
             </div>
         </div>
     </div>
