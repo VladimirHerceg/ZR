@@ -3,6 +3,24 @@ if (!isset($_GET["action"]) || empty($_GET["action"]))
 header("Location: index.php");
 require "include/header.php";
 
+switch ($language){
+  case "eng":
+    $search = "Title";
+    $opc = "Options";
+    $pos = "Posts";
+    $sta = "Statistics";
+    $del = "Delete profile";
+      break;
+  case "srb":
+    $search = "Titl";
+    $opc = "Opcije";
+    $pos = "Postovi";
+    $sta = "Statistika";
+    $del = "Obriši profil";
+      break;
+}
+
+
 $stats="";
 if (isset($_GET["stats"]))
 $stats = $_GET["stats"]; 
@@ -31,12 +49,12 @@ switch ($stats) {
 
     echo '<body class="d-flex flex-column min-vh-100">';
     echo '<div class="row col-1">
-    <a class="nav-link col-12 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opcije</a>
+    <a class="nav-link col-12 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$opc.'</a>
     <div class="dropdown-menu col-1" aria-labelledby="navbarDropdown">
-  <a class="dropdown-item" href="profile.php?action='.$action.'">Postovi</a>
-  <a class="dropdown-item" href="profile.php?action='.$action.'&stats=stats">Statistika</a>';
+  <a class="dropdown-item" href="profile.php?action='.$action.'">'.$pos.'</a>
+  <a class="dropdown-item" href="profile.php?action='.$action.'&stats=stats">'.$sta.'</a>';
   if($id == $action)
-  echo '<a class="dropdown-item" href="include/update.php?action=deleteMe&id='.$action.'">Obriši profil</a>';
+  echo '<a class="dropdown-item" href="include/update.php?action=deleteMe&id='.$action.'">'.$del.'</a>';
   else if($moderator == 1 && $id != $action)
   echo '<a class="dropdown-item" href="include/update.php?action=banUser&id='.$action.'">Ban</a>';
   echo'</div>
@@ -46,9 +64,31 @@ switch ($stats) {
     if(mysqli_num_rows($result)>0){
         echo "<div class='row col-7 align-self-center justify-content-center bg-dark border' style='overflow:auto; height:45vh;' >";
       while ($record= mysqli_fetch_array($result)){
-          echo "
+        switch ($language){
+          case "eng":
+            echo "
           <div class='row align-self-center bg-dark border'>
-          <div class='col-3 align-self-center bg-dark '>Totalani broj postova</div>
+          <div class='col-3 align-self-center bg-dark '>Number of total posts</div>
+          <div class='col-3 offset-4 align-self-center bg-dark' >".$record["PTotal"]."</div>
+          </div>
+          <div class='row align-self-center bg-dark border'>
+          <div class='col-3 align-self-center bg-dark '>Number of current posts</div>
+          <div class='col-3 offset-4 align-self-center bg-dark' >".$record["PCurrent"]."</div>
+          </div>
+          <div class='row align-self-center bg-dark border'>
+          <div class='col-3 align-self-center bg-dark '>Number of deleted posts</div>
+          <div class='col-3 offset-4 align-self-center bg-dark' >".$record["PDeleted"]."</div>
+          </div>
+          <div class='row align-self-center bg-dark border'>
+          <div class='col-3 align-self-center bg-dark '>Reports</div>
+          <div class='col-3 offset-4 align-self-center bg-dark' >".$record["Reports"]."</div>
+          </div>
+          </div>";
+              break;
+          case "srb":
+            echo "
+          <div class='row align-self-center bg-dark border'>
+          <div class='col-3 align-self-center bg-dark '>Totalni broj postova</div>
           <div class='col-3 offset-4 align-self-center bg-dark' >".$record["PTotal"]."</div>
           </div>
           <div class='row align-self-center bg-dark border'>
@@ -64,7 +104,8 @@ switch ($stats) {
           <div class='col-3 offset-4 align-self-center bg-dark' >".$record["Reports"]."</div>
           </div>
           </div>";
-          
+              break;
+        }          
             }
             echo "</div>";
         }
@@ -102,16 +143,15 @@ mysqli_free_result($result);
 
 echo '<body class="d-flex flex-column min-vh-100">';
   echo '<div class="row col-1">
-    <a class="nav-link dropdown-toggle col-12" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opcije</a>
+    <a class="nav-link dropdown-toggle col-12" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$opc.'</a>
     <div class="dropdown-menu col-1" aria-labelledby="navbarDropdown">
-  <a class="dropdown-item" href="profile.php?action='.$action.'">Postovi</a>
-  <a class="dropdown-item" href="profile.php?action='.$action.'&stats=stats">Statistika</a>
-  <a class="dropdown-item" href="include/update.php?action=deleteMe&id='.$action.'">Obriši profil</a>';
+  <a class="dropdown-item" href="profile.php?action='.$action.'">'.$pos.'</a>
+  <a class="dropdown-item" href="profile.php?action='.$action.'&stats=stats">'.$sta.'</a>
+  <a class="dropdown-item" href="include/update.php?action=deleteMe&id='.$action.'">'.$del.'</a>';
   echo'</div>
   <div>'.$user.'</div></div>';
 $url = "profile.php?action=".$action."";
-$search = "Titl";
-form($url,$search);
+form($url,$search,$language);
 
 
 
@@ -164,18 +204,17 @@ echo "</div>";
 elseif ($moderator == 1 && $id != $action) {
   echo '<body class="d-flex flex-column min-vh-100">';
 echo '<div class="row col-1">
-<a class="nav-link dropdown-toggle col-12" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opcije</a>
+<a class="nav-link dropdown-toggle col-12" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$opc.'</a>
 <div class="dropdown-menu col-1" aria-labelledby="navbarDropdown">
-<a class="dropdown-item" href="profile.php?action='.$action.'">Postovi</a>
-<a class="dropdown-item" href="profile.php?action='.$action.'&stats=stats">Statistika</a>
+<a class="dropdown-item" href="profile.php?action='.$action.'">'.$pos.'</a>
+<a class="dropdown-item" href="profile.php?action='.$action.'&stats=stats">'.$sta.'</a>
 <a class="dropdown-item" href="include/update.php?action=banUser&id='.$action.'">Ban</a>';
 echo'</div>
 <div>'.$user.'</div></div>';
 
 
   $url = "profile.php?action=".$action."";
-  $search = "Titl";
-  form($url,$search);    
+  form($url,$search,$language);    
     echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";
     $sql="SELECT posts.Id as Id, posts.Title as title FROM posts WHERE posts.MemberId = $action";
     
@@ -208,15 +247,14 @@ else {
     echo '<body class="d-flex flex-column min-vh-100">';
     echo '<body class="d-flex flex-column min-vh-100">';
     echo '<div class="row col-1">
-    <a class="nav-link dropdown-toggle col-12" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Opcije</a>
+    <a class="nav-link dropdown-toggle col-12" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$opc.'</a>
     <div class="dropdown-menu col-1" aria-labelledby="navbarDropdown">
-    <a class="dropdown-item" href="profile.php?action='.$action.'">Postovi</a>
-    <a class="dropdown-item" href="profile.php?action='.$action.'&stats=stats">Statistika</a>';
+    <a class="dropdown-item" href="profile.php?action='.$action.'">'.$pos.'</a>
+    <a class="dropdown-item" href="profile.php?action='.$action.'&stats=stats">'.$sta.'</a>';
     echo'</div>
     <div>'.$user.'</div></div>';
         $url = "profile.php?action=".$action."";
-        $search = "Titl";
-    form($url,$search);    
+    form($url,$search,$language);    
       
     echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";
     $sql="SELECT posts.Id as Id, posts.Title as title FROM posts WHERE posts.MemberId = $action";

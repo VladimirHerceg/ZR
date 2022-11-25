@@ -3,8 +3,18 @@
     <div class="container-fluid text-center text-md-left">
         <div class="row text-center">
             <div class="col-md-4">
-                <h5 class="text-uppercase">Ani Forum</h5>
-                <p>Forum za pronalaženje i spašavanje životinja</p>
+            <?php 
+            switch ($language){
+                case "eng":
+                    echo '<h5 class="text-uppercase">Ani Forum</h5>
+                    <p>Animal forum</p>';
+                    break;
+                case "srb":
+                    echo '<h5 class="text-uppercase">Ani Forum</h5>
+                    <p>Životinjski forum</p>';
+                    break;
+}
+?>
                 </div>
             <hr class="clearfix w-100 d-md-none pb-3">
             <div class="col-md-4 mb-md-0 mb-3">
@@ -14,7 +24,7 @@
                         <p><i class="fas fa-home"></i> Subotica</p>
                     </li>
                     <li>
-                        <p><i class="fas fa-envelope-square"></i> aniforum@gmail.com</p>
+                        <p><i class="fas fa-envelope-square"></i> hercegznadlanu@gmail.com</p>
                     </li>
                     <li>
                         <p><a class="fas fa-phone" href="tel:+024548779" style="color: #000; text-decoration: none"> 063-750 9033</a></p>

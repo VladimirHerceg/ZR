@@ -5,7 +5,7 @@ $search = "Titl";
 ?>
 <body class="d-flex flex-column min-vh-100">
 <?php
-form($url,$search);
+form($url,$search,$language);
 echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";
 $sql="SELECT posts.Id as Id, posts.Title as title FROM posts";
 

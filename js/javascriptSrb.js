@@ -15,13 +15,6 @@ window.addEventListener('load', function() {
 window.addEventListener('load', myCaseFunction);
 
 window.addEventListener('load', function() {
-    document.getElementById('adminInsert-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        if (checkAdminInsert()) this.submit();
-    });
-});
-
-window.addEventListener('load', function() {
     document.getElementById('insert-form').addEventListener('submit', function(e) {
         e.preventDefault();
         if (checkInsert()) this.submit();
@@ -85,7 +78,7 @@ function myCaseFunction() {
             alert("Verifikacioni email je poslat")
             break;
             case "?r=7":
-            $('all_error').innerHTML = 'Ovaj profil je banovan, ako želite da znate zašto ili da se žalite na ovu odluku molimo vam da se javite preko email-a sa korisničkim imenom';
+            $('all_error').innerHTML = 'Ovaj korisnik je banovan, za više informacija javite se preko email-a sa korisničkim imenom';
             break;
             
     }
@@ -164,52 +157,6 @@ var checkReport = function() {
         isValid = false;
 
     }
-    return isValid;
-
-}
-
-var checkAdminInsert = function() {
-    $('category_error').innerHTML = '';
-    $('manufacturer_error').innerHTML = '';
-    $('name_error').innerHTML = '';
-    $('description_error').innerHTML = '';
-    $('price_error').innerHTML = '';
-    $('image_error').innerHTML = '';
-    $('all_error').innerHTML = '';
-
-    var isValid = true;
-
-    if (isNaN($('category').value) || isNaN($('manufacturer').value) || $('description').value == ''||
-        $('price').value == ''|| $('image').value == '') {
-        $('all_error').innerHTML = 'Sva polja moraju biti popunjena';
-        isValid = false;
-    }
-    if($('name').value == '') {
-        $('all_error').innerHTML = 'Sva polja moraju biti popunjena';
-        isValid = false;
-    }
-    else if ($('name').value.length < 4) {
-        $('name_error').innerHTML = 'Naziv mora sadržati preko 4 karaktera';
-        isValid = false;
-    }
-
-    if($('description').value == '') {
-        $('all_error').innerHTML = 'Sva polja moraju biti popunjena';
-        isValid = false;
-    }
-    else if ($('description').value.length > 256) {
-        $('description_error').innerHTML = 'Opis mora sadržati do 256 karaktera';
-        isValid = false;
-    }
-    if($('price').value == '') {
-        $('all_error').innerHTML = 'Sva polja moraju biti popunjena';
-        isValid = false;
-    }
-    else if (isNaN($('price').value)) {
-        $('price_error').innerHTML = 'Cena mora sadržati samo brojeve';
-        isValid = false;
-    }
-
     return isValid;
 
 }

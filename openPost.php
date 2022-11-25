@@ -35,8 +35,31 @@ $postSql = "SELECT *, posts.Id as postId FROM `posts` INNER JOIN members ON memb
 $postResult=mysqli_query($connection,$postSql);
 if(mysqli_num_rows($postResult)>0){
     while ($post= mysqli_fetch_array($postResult)){    
+
         
-               
+switch ($language){
+    case "eng":
+        echo"<div class='col-3 bg-dark dropdown'>
+                <a class='nav-link dropdown-toggle' style='color:whitesmoke;' href='#' id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+        ...
+    </a>
+    <div class='dropdown-menu' aria-labelledby='navbarDropdown'>";
+
+    if(isset($_SESSION['u_id'])){
+        echo "<a class='dropdown-item' href='report.php?id=".$sessId."&action=".$post["postId"]."'>Report</a>";
+        $fpid = $post["postId"];
+        $fmid = $post["MemberId"];
+        $favSql = "SELECT * FROM favorite WHERE MemberId = $sessId AND PostId = $fpid;";  
+        $favres=mysqli_query($connection,$favSql);
+        if(mysqli_num_rows($favres) == 0){
+            echo "<a class='dropdown-item' href='include/update.php?action=favorite&id=".$post["postId"]."'>Favorite</a>";
+        }
+}
+if($sessId == $post["MemberId"] or $moderator == 1){
+    echo "<a class='dropdown-item' href='include/update.php?action=deleteMyPost&id=".$post["postId"]."'>Delete</a>";
+}
+        break;
+    case "srb":
         echo"<div class='col-3 bg-dark dropdown'>
                 <a class='nav-link dropdown-toggle' style='color:whitesmoke;' href='#' id='navbarDropdown' role='button' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
         ...
@@ -56,6 +79,9 @@ if(mysqli_num_rows($postResult)>0){
 if($sessId == $post["MemberId"] or $moderator == 1){
     echo "<a class='dropdown-item' href='include/update.php?action=deleteMyPost&id=".$post["postId"]."'>Obriši</a>";
 }
+        break;
+}
+
 
     echo "</div>
                 </div>
@@ -98,7 +124,23 @@ if($sessId == $post["MemberId"] or $moderator == 1){
         
 }
 if(isset($_SESSION['u_id']))
-echo '
+switch ($language){
+    case "eng":
+        echo '
+<form id="comment-form" action="include/update.php?action=comment&PostId='.$id.'" method="post" enctype="multipart/form-data">
+    <div class="row justify-content-center mx-0 px-0" style="margin-top: 35px">  
+                <div class="col-8">
+                  <label for="content"></label>
+                  <textarea style="height:vh50;resize: none;" class="form-control  text-center" id="content" placeholder="Comment" name="content"></textarea>
+                </div>
+                <input type="submit" class="btn btn-info col-2" style="height:vh1" value="Comment">
+                </div>
+    <span id="all_error" class="error"></span><br><br>
+        </form>
+        </div>';
+        break;
+    case "srb":
+        echo '
 <form id="comment-form" action="include/update.php?action=comment&PostId='.$id.'" method="post" enctype="multipart/form-data">
     <div class="row justify-content-center mx-0 px-0" style="margin-top: 35px">  
                 <div class="col-8">
@@ -110,6 +152,9 @@ echo '
     <span id="all_error" class="error"></span><br><br>
         </form>
         </div>';
+        break;
+}
+
 ?>
 </div>
 </div>

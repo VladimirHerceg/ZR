@@ -13,6 +13,15 @@ else
      echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';//This causes the browser to open the new page after 0 seconds, i.e immediately.
 }
 
+switch ($language){
+  case "eng":
+      $search = "Username";
+      break;
+  case "srb":
+      $search = "Korisničko ime";
+      break;
+}
+
 $action="";
 if(isset($_GET["action"]))
     $action=$_GET["action"];
@@ -22,8 +31,7 @@ switch ($action){
     case "user":
 
         $url ="admin.php?action=user";
-        $search = "Korisničko ime";
-        form($url,$search);
+        form($url,$search,$language);
 
             echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";
             $sql="SELECT * FROM members WHERE Moderator !=1";
@@ -74,8 +82,7 @@ switch ($action){
 
 
         $url ="admin.php?action=mod";
-        $search = "Korisničko ime";
-        form($url,$search);
+        form($url,$search,$language);
                     echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";
             $sql="SELECT * FROM members WHERE Moderator =1 AND Admin !=1";
             
@@ -126,7 +133,7 @@ switch ($action){
 
     $url ="admin.php?action=user";
     $search = "Korisničko ime";
-    form($url,$search);
+    form($url,$search,$language);
 
         echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";
         $sql="SELECT * FROM members WHERE Moderator !=1";

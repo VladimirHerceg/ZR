@@ -69,7 +69,14 @@ if(mysqli_num_rows($result)>0){
 }
 }
 else
-echo "Nema postova";
+switch ($language){
+    case "eng":
+        echo "No posts";
+        break;
+    case "srb":
+        echo "Nema postova";
+        break;
+}
 ?>
 
 </div>

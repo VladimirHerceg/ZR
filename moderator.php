@@ -11,6 +11,16 @@ else
 {
      echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';//This causes the browser to open the new page after 0 seconds, i.e immediately.
 }
+            switch ($language){
+                case "eng":
+                  $searchTitle = "Title";
+                  $searchName = "Username";
+                  break;
+                case "srb":
+                  $searchTitle = "Titl";
+                  $searchName = "Korisničko ime";
+                    break;
+}
 
 $action="";
 if(isset($_GET["action"]))
@@ -22,8 +32,7 @@ if(isset($_GET["id"]))
 switch ($action){
     case "post":
         $url ="moderator.php?action=post";
-        $search = "Titl";
-        form($url,$search);
+        form($url,$searchTitle,$language);
 
             echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";
             $sql="SELECT posts.Id as Id, posts.Title as title FROM posts ";
@@ -79,8 +88,7 @@ if(!empty($_POST["name"])){
 
     case "user":
         $url ="moderator.php?action=user";
-        $search = "Korisničko ime";
-        form($url,$search);
+        form($url,$searchName,$language);
             echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";
             $sql="SELECT * FROM members WHERE Moderator !=1 AND Banned !=1";
             
@@ -129,70 +137,130 @@ if(!empty($_POST["name"])){
 
 
     case "report":
+
+            switch ($language){
+                case "eng":
+                  echo '<body class="d-flex flex-column min-vh-100">
+                  <form action="moderator.php?action=report" method="post" >
+                          <div class="container-fluid text-center text-md-left">
+                              <div class="row  justify-content-center mx-0 px-0" style="margin-top: 35px">
+                              <div class="rcena custom-control custom-radio text-center col-6 offset-3 col-md-2 offset-md-0" >
+                                      <input type="radio" class="form-input" id="rise" name="sort" value="rise">
+                                         <label class="form-label" style="color: whitesmoke" for="rise">Oldest</label>
+                                  </div>
+                                  <div class="rcena custom-control custom-radio text-center col-6 offset-3 col-md-2 offset-md-0">
+                                      <input type="radio" class="form-input" id="fall" name="sort" value="fall">
+                                          <label class="form-label" style="color: whitesmoke" for="fall">Newest</label>
+                                  </div>
+                              </div>
+                              <div class="row">
+                              <input type="submit" name="sub" class="trazib btn btn-primary col-4 offset-4 col-xl-2 offset-xl-3" value="Search">
+                                  <input type="submit" name="drop" class="ponistib btn btn-primary col-4 offset-4 col-xl-2 offset-xl-2" value="Cancel">
+                              </div> 
+                          </div> 
+                      </form>';
+          
+                      echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";
+                      $sql="SELECT * FROM report";
+                      
+                          $sort="";
+                          if (isset($_POST['sort'])) {
+                          $sort = $_POST['sort'];
+                          if ($sort=="rise"){
+                            $sql.=" ORDER BY id ASC";
+                          }else{
+                            $sql.=" ORDER BY id DESC";
+                          }
+                          }
+                          echo "<div class='row col-7 justify-content-start bg-dark border' style='overflow:auto; height:45vh; display: flex;' >";
+                          echo "<div class='row col-12' align-self-center style='height:5%; display: flex;'>";
+                          echo "
+                          <div class='col-4 align-self-top bg-dark border-bottom' style='color: whitesmoke;'>Post Id</div><br>
+                          <div class='col-4 align-self-top bg-dark border-bottom' style='color: whitesmoke;'>Reason</div><br>
+                          <div class='col-4 align-self-top bg-dark border-bottom' style='color: whitesmoke;'>Delete</div><br></div>";
+                      
+                      $result=mysqli_query($connection,$sql);
+                      if(mysqli_num_rows($result)>0){
+                        while ($record= mysqli_fetch_array($result)){
+          
+                          echo "<div class='row col-12 align-self-center border-top bg-dark border mx-0 px-0'>
+                          <div class='col-4 align-self-center bg-dark' style='color: whitesmoke'><a href='openPost.php?action=".$record["PostId"]."'>".$record["PostId"]."</a></div><br>
+                          <div class='col-4 align-self-center bg-dark' style='color: whitesmoke'>".$record["Reason"]."</div><br>";
+                          echo "<button class=\"btn btn-info col-4 align-self-center mx-0 px-0 border\" onclick=\"window.location.href='include/update.php?action=deleteReport&id=".$record["Id"]."'\">Remove</button>
+                          </div>";                
+                              }
+                          }
+                          echo "</div>";
+          
+                          mysqli_free_result($result);
+                      echo "</div>";
+                    break;
+                case "srb":
+                  echo '<body class="d-flex flex-column min-vh-100">
+                  <form action="moderator.php?action=report" method="post" >
+                          <div class="container-fluid text-center text-md-left">
+                              <div class="row  justify-content-center mx-0 px-0" style="margin-top: 35px">
+                              <div class="rcena custom-control custom-radio text-center col-6 offset-3 col-md-2 offset-md-0" >
+                                      <input type="radio" class="form-input" id="rise" name="sort" value="rise">
+                                         <label class="form-label" style="color: whitesmoke" for="rise">Najstarije</label>
+                                  </div>
+                                  <div class="rcena custom-control custom-radio text-center col-6 offset-3 col-md-2 offset-md-0">
+                                      <input type="radio" class="form-input" id="fall" name="sort" value="fall">
+                                          <label class="form-label" style="color: whitesmoke" for="fall">Najnovije</label>
+                                  </div>
+                              </div>
+                              <div class="row">
+                              <input type="submit" name="sub" class="trazib btn btn-primary col-4 offset-4 col-xl-2 offset-xl-3" value="Trazi">
+                                  <input type="submit" name="drop" class="ponistib btn btn-primary col-4 offset-4 col-xl-2 offset-xl-2" value="Poništi">
+                              </div> 
+                          </div> 
+                      </form>';
+          
+                      echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";
+                      $sql="SELECT * FROM report";
+                      
+                          $sort="";
+                          if (isset($_POST['sort'])) {
+                          $sort = $_POST['sort'];
+                          if ($sort=="rise"){
+                            $sql.=" ORDER BY id ASC";
+                          }else{
+                            $sql.=" ORDER BY id DESC";
+                          }
+                          }
+                          echo "<div class='row col-7 justify-content-start bg-dark border' style='overflow:auto; height:45vh; display: flex;' >";
+                          echo "<div class='row col-12' align-self-center style='height:5%; display: flex;'>";
+                          echo "
+                          <div class='col-4 align-self-top bg-dark border-bottom' style='color: whitesmoke;'>Post Id</div><br>
+                          <div class='col-4 align-self-top bg-dark border-bottom' style='color: whitesmoke;'>Razlog</div><br>
+                          <div class='col-4 align-self-top bg-dark border-bottom' style='color: whitesmoke;'>Obriši</div><br></div>";
+                      
+                      $result=mysqli_query($connection,$sql);
+                      if(mysqli_num_rows($result)>0){
+                        while ($record= mysqli_fetch_array($result)){
+          
+                          echo "<div class='row col-12 align-self-center border-top bg-dark border mx-0 px-0'>
+                          <div class='col-4 align-self-center bg-dark' style='color: whitesmoke'><a href='openPost.php?action=".$record["PostId"]."'>".$record["PostId"]."</a></div><br>
+                          <div class='col-4 align-self-center bg-dark' style='color: whitesmoke'>".$record["Reason"]."</div><br>
+                          <button class=\"btn btn-info col-4 align-self-center mx-0 px-0 border\" onclick=\"window.location.href='include/update.php?action=deleteReport&id=".$record["Id"]."'\">Ukloni</button>
+                          </div>";                
+                              }
+                          }
+                          echo "</div>";
+          
+                          mysqli_free_result($result);
+                      echo "</div>";
+                    break;
+}
         
-        echo '<body class="d-flex flex-column min-vh-100">
-        <form action="moderator.php?action=report" method="post" >
-                <div class="container-fluid text-center text-md-left">
-                    <div class="row  justify-content-center mx-0 px-0" style="margin-top: 35px">
-                    <div class="rcena custom-control custom-radio text-center col-6 offset-3 col-md-2 offset-md-0" >
-                            <input type="radio" class="form-input" id="rise" name="sort" value="rise">
-                               <label class="form-label" style="color: whitesmoke" for="rise">Najstarije</label>
-                        </div>
-                        <div class="rcena custom-control custom-radio text-center col-6 offset-3 col-md-2 offset-md-0">
-                            <input type="radio" class="form-input" id="fall" name="sort" value="fall">
-                                <label class="form-label" style="color: whitesmoke" for="fall">Najnovije</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                    <input type="submit" name="sub" class="trazib btn btn-primary col-4 offset-4 col-xl-2 offset-xl-3" value="Trazi">
-                        <input type="submit" name="drop" class="ponistib btn btn-primary col-4 offset-4 col-xl-2 offset-xl-2" value="Ponisti">
-                    </div> 
-                </div> 
-            </form>';
-
-            echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";
-            $sql="SELECT * FROM report";
-            
-                $sort="";
-                if (isset($_POST['sort'])) {
-                $sort = $_POST['sort'];
-                if ($sort=="rise"){
-                  $sql.=" ORDER BY id ASC";
-                }else{
-                  $sql.=" ORDER BY id DESC";
-                }
-                }
-                echo "<div class='row col-7 justify-content-start bg-dark border' style='overflow:auto; height:45vh; display: flex;' >";
-                echo "<div class='row col-12' align-self-center style='height:5%; display: flex;'>";
-                echo "
-                <div class='col-4 align-self-top bg-dark border-bottom' style='color: whitesmoke;'>Post Id</div><br>
-                <div class='col-4 align-self-top bg-dark border-bottom' style='color: whitesmoke;'>Razlog</div><br>
-                <div class='col-4 align-self-top bg-dark border-bottom' style='color: whitesmoke;'>Obriši</div><br></div>";
-            
-            $result=mysqli_query($connection,$sql);
-            if(mysqli_num_rows($result)>0){
-              while ($record= mysqli_fetch_array($result)){
-
-                echo "<div class='row col-12 align-self-center border-top bg-dark border mx-0 px-0'>
-                <div class='col-4 align-self-center bg-dark' style='color: whitesmoke'><a href='openPost.php?action=".$record["PostId"]."'>".$record["PostId"]."</a></div><br>
-                <div class='col-4 align-self-center bg-dark' style='color: whitesmoke'>".$record["Reason"]."</div><br>
-                <button class=\"btn btn-info col-4 align-self-center mx-0 px-0 border\" onclick=\"window.location.href='include/update.php?action=deleteReport&id=".$record["Id"]."'\">Remove</button>
-                </div>";                
-                    }
-                }
-                echo "</div>";
-
-                mysqli_free_result($result);
-            echo "</div>";
-
+       
 
     break;
 
         case "ban":
 
             $url ="moderator.php?action=ban";
-            $search = "Korisničko ime";
-            form($url,$search);
+            form($url,$searchName,$language);
 
     
                 echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";
