@@ -71,3 +71,4 @@ if(isset($_SESSION['u_id'])) {
 </body>
 <?php
 require "include/footer.php";
+?>

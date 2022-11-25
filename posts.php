@@ -1,7 +1,14 @@
 <?php
 require "include/header.php";
 $url = "posts.php";
-$search = "Titl";
+switch ($language){
+  case "eng":
+    $search = "Title";
+    break;
+  case "srb":
+    $search = "Titl";
+    break;
+}
 ?>
 <body class="d-flex flex-column min-vh-100">
 <?php
