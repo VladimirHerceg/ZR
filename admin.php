@@ -34,7 +34,7 @@ switch ($action){
         form($url,$search,$language);
 
             echo "<div class='row justify-content-center text-center flex-grow text-light mx-0 px-0' style='margin-top:75px'>";
-            $sql="SELECT * FROM members WHERE Moderator !=1";
+            $sql="SELECT * FROM members WHERE Moderator !=1 AND Banned !=1";
             
             if(!empty($_POST["name"])){
                 $where="";
